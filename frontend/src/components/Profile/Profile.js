@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import accountLogo from '../images/accountLogo.png';
 import account from '../images/account.jpg';
-import './profile.css'; 
+import './profile.css';
 
 const Profile = () => {
   const [friends, setFriends] = useState([]);
@@ -11,6 +11,7 @@ const Profile = () => {
   const [requests, setRequests] = useState([]);
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
+  //const username = localStorage.getItem('username'); 
 
   useEffect(() => {
     const fetchFriends = async () => {
@@ -76,6 +77,7 @@ const Profile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('authToken');
+    localStorage.removeItem('username');
     navigate('/login');
   };
 
@@ -86,7 +88,8 @@ const Profile = () => {
   return (
     <div className='profile-container'>
       <div className='header'>
-        <div><img src={accountLogo} alt="Logo" style={{ width: '50px', height: '50px', margin: '7px' }} />
+        <div>
+          <img src={accountLogo} alt="Logo" style={{ width: '50px', height: '50px', margin: '7px' }} />
         </div>
         <h2>Profile</h2>
         <button className='logout' onClick={handleLogout}>Logout</button>
@@ -103,9 +106,13 @@ const Profile = () => {
               friends.map((friend) => (
                 <li key={friend._id}>
                   <img src={account} alt="Logo"/>
-                  {friend.username}
-                  <button className='friends-btn' onClick={() => handleUnfriend(friend._id)}>Unfriend</button>
-                  <button className='friends-btn'>View Profile</button>
+                  <div className='c1'>
+                     <h5>{friend.username}</h5>
+                     <div className='btn-container'>
+                       <button className='friends-btn' onClick={() => handleUnfriend(friend._id)}>Unfriend</button>
+                       <button className='friends-btn'>View Profile</button>
+                     </div>
+                  </div>
                 </li>
               ))
             )}

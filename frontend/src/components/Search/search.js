@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import './search.css';
+import account from '../images/account.jpg';
 
 const SearchResults = () => {
   const { query } = useParams();
@@ -38,8 +39,9 @@ const SearchResults = () => {
 
   return (
     <div>
-      <h2>Search Results for "{query}"</h2>
-      <ul>
+      <h3>Search Results for "{query}"</h3>
+      <img className='logo1' src={account} alt="Logo" />
+      <ul className='search'>
         {results.map((user) => (
           <li key={user._id}>
             {user.username}

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './recommend.css';
+import account from '../images/account.jpg';
 
 const Recommendations = () => {
   const [recommendations, setRecommendations] = useState([]);
@@ -32,17 +34,21 @@ const Recommendations = () => {
   };
 
   return (
-    <div>
-      <h3>Friend Recommendations</h3>
+    <div className='first-container'>
+      <h2 className='head'>Friend Recommendations</h2>
       {recommendations.length === 0 ? (
         <p>No friend recommendations available at the moment.</p>
       ) : (
-        <ul>
+        <ul className='users-datas'>
           {recommendations.map((friend) => (
-            <li key={friend._id}>
-              {friend.username} 
-              <button onClick={() => handleSendRequest(friend._id)}>Send Friend Request</button>
-            </li>
+              <li key={friend._id}>
+                  <div className='data-child'>
+                    <img className='friends-logo' src={account} alt="Logo" />
+                    <h3>{friend.username}</h3>
+                    <button className='sujjest-btn' onClick={() => handleSendRequest(friend._id)}>Add Friend</button>
+                  </div>
+              </li>
+            
           ))}
         </ul>
       )}

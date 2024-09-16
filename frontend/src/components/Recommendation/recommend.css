@@ -1,0 +1,33 @@
+.first-container{
+    margin: 20px;
+}
+.head{
+    margin-left: 40px;
+}
+.users-datas{
+    list-style-type: none;
+}
+.sujjest-btn{
+    height: 30px;
+    width: 90px;
+}
+.data-child{
+    display: flex;
+}
+.data-child h3{
+    margin: 40px;
+}
+.data-child button{
+    margin: 40px;
+}
+
+@media (min-width: 768px) {
+    .container {
+      padding: 20px;
+    }
+    .data-child button{
+        margin: 10px;
+        width: 70px;
+
+    }
+  }

@@ -17,7 +17,7 @@ const Login = () => {
       const token = localStorage.getItem('token');
       console.log('Token:', token);
       navigate('/home');
-    } catch (err) {
+    } catch (err) { 
       setError(err.response?.data?.msg || 'Invalid credentials');
     }
   };
