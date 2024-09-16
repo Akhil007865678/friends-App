@@ -6,6 +6,7 @@ import account from '../images/account.jpg';
 import Recommendations from '../Recommendation/Recommendation';
 import './home.css';
 import { jwtDecode } from 'jwt-decode';
+import { ipaddress } from '../../demo/domain';
 
 
 const Home = () => {
@@ -25,7 +26,7 @@ const Home = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/friends/users', {
+      const response = await axios.get(`http://${ipaddress}/api/friends/users`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setUsers(response.data);
@@ -53,9 +54,9 @@ const Home = () => {
     navigate('/login');
   };
 
-  const sendFriendRequest = async (userId) => {
+  const sendFriendRequest = async (userId) => { 
     try {
-      await axios.post('http://localhost:5000/api/friends/request', { userId }, {
+      await axios.post(`http://${ipaddress}/api/friends/request`, { userId }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('Friend request sent');

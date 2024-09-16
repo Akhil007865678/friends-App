@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import './search.css';
 import account from '../images/account.jpg';
+import { ipaddress } from '../../demo/domain';
 
 const SearchResults = () => {
   const { query } = useParams();
@@ -12,7 +13,7 @@ const SearchResults = () => {
   useEffect(() => {
     const fetchResults = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/friends/search?query=${query}`, {
+        const response = await axios.get(`http://${ipaddress}/api/friends/search?query=${query}`, {
           headers: { Authorization: token }
         });
         setResults(response.data);
@@ -28,7 +29,7 @@ const SearchResults = () => {
 
   const sendFriendRequest = async (userId) => {
     try {
-      await axios.post('http://localhost:5000/api/friends/request', { userId }, {
+      await axios.post(`http://${ipaddress}/api/friends/request`, { userId }, {
         headers: { Authorization: token }
       });
       alert('Friend request sent');

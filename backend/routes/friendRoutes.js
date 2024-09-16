@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/search', auth, searchUsers);
 router.get('/getrequests', authMiddleware, getFriendRequests);
 router.get('/getfriends', authMiddleware, getFriends);
-router.post('/request', auth, sendFriendRequest);
+router.post('/request', authMiddleware, sendFriendRequest);
 router.delete('/unfriend/:friendId', authMiddleware, unfriend);
 router.get('/recommendations', authMiddleware, getRecommendations);
 router.post('/request/handle', authMiddleware, handleFriendRequest);

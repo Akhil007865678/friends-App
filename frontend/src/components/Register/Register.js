@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { ipaddress } from '../../demo/domain';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -11,7 +12,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/register', { username, password });
+      await axios.post(`http://${ipaddress}/api/auth/register`, { username, password });
       navigate('/login');
     } catch (err) {
       setError(err.response?.data?.msg || 'Something went wrong');

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
+import { ipaddress } from '../../demo/domain';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -12,7 +13,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { username, password });
+      const response = await axios.post(`http://${ipaddress}/api/auth/login`, { username, password });
       localStorage.setItem('token', response.data.token);
       const token = localStorage.getItem('token');
       console.log('Token:', token);

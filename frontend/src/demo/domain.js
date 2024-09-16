@@ -1,0 +1,1 @@
+export const ipaddress = "13.233.253.250";

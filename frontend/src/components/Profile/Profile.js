@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import accountLogo from '../images/accountLogo.png';
 import account from '../images/account.jpg';
 import './profile.css';
+import { ipaddress } from '../../demo/domain';
 
 const Profile = () => {
   const [friends, setFriends] = useState([]);
@@ -16,10 +17,13 @@ const Profile = () => {
   useEffect(() => {
     const fetchFriends = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/friends/getfriends', {
+        const response = await axios.get(`http://${ipaddress}/api/friends/getfriends`, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        setFriends(response.data);
+        const uniqueFriends = Array.from(new Set(response.data.map(friend => friend._id)))
+          .map(id => response.data.find(friend => friend._id === id));
+        
+        setFriends(uniqueFriends);
       } catch (err) {
         console.error(err);
       }
@@ -27,11 +31,13 @@ const Profile = () => {
 
     const fetchFriendRequests = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/friends/getrequests', {
+        const response = await axios.get(`http://${ipaddress}/api/friends/getrequests`, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        console.log('Friend Requests:', response.data);
-        setFriendRequests(response.data);
+        const uniqueRequests = Array.from(new Set(response.data.map(request => request._id)))
+        .map(id => response.data.find(request => request._id === id));
+    
+        setFriendRequests(uniqueRequests);
       } catch (err) {
         console.error('Error fetching friend requests:', err);
       }
@@ -43,7 +49,7 @@ const Profile = () => {
 
   const handleAcceptRequest = async (requestId) => {
     try {
-      await axios.post('http://localhost:5000/api/friends/request/handle', {
+      await axios.post(`http://${ipaddress}/api/friends/request/handle`, {
         requesterId: requestId,
         action: 'accept',
       }, { headers: { Authorization: `Bearer ${token}` } });
@@ -55,7 +61,7 @@ const Profile = () => {
 
   const handleRejectRequest = async (requesterId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/friends/rejectRequest/${requesterId}`, {
+      await axios.delete(`http://${ipaddress}/api/friends/rejectRequest/${requesterId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setRequests(requests.filter(request => request._id !== requesterId));
@@ -66,7 +72,7 @@ const Profile = () => {
 
   const handleUnfriend = async (friendId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/friends/unfriend/${friendId}`, {
+      await axios.delete(`http://${ipaddress}/api/friends/unfriend/${friendId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setFriends(friends.filter(friend => friend._id !== friendId));

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './recommend.css';
 import account from '../images/account.jpg';
+import { ipaddress } from '../../demo/domain';
 
 const Recommendations = () => {
   const [recommendations, setRecommendations] = useState([]);
@@ -10,7 +11,7 @@ const Recommendations = () => {
   useEffect(() => {
     const fetchRecommendations = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/friends/recommendations', {
+        const response = await axios.get(`http://${ipaddress}/api/friends/recommendations`, {
           headers: { Authorization: `Bearer ${token}` } 
         });
         setRecommendations(response.data); 
@@ -24,7 +25,7 @@ const Recommendations = () => {
 
   const handleSendRequest = async (friendId) => {
     try {
-      await axios.post(`http://localhost:5000/api/friends/sendRequest/${friendId}`, {}, {
+      await axios.post(`http://${ipaddress}/api/friends/sendRequest/${friendId}`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('Friend request sent!');

@@ -68,7 +68,7 @@
     width: 650px;
 }
 
-@media (min-width: 412px) {
+@media (max-width: 412px) {
     body {
       font-size: 18px;
       background-color: rgb(248, 235, 219);
