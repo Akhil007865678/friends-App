@@ -1,0 +1,19 @@
+.home-container{
+    display: flex;
+    background-color: rgb(248, 235, 219);
+}
+.search-box{
+    margin-top: 20px;
+    height: 30px;
+    margin-left: 200px;
+    width: 500px;
+}
+.logout{
+    margin-top: 20px;;
+    height: 30px;
+    width: 60px;
+    margin-left: 100px;
+}
+.image{
+    margin-left: 300px;
+}

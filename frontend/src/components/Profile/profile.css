@@ -1,0 +1,61 @@
+.data-container{
+    display: flex;
+}
+.friend-container{
+    margin: 20px;
+    background-color: rgb(248, 235, 219);
+    width: 600px;
+    margin-left: 100px;
+}
+.friend-container h3{
+    margin-left: 70px;
+    font-size: larger;
+}
+.friend-container ul{
+    margin-left: 70px;
+    list-style-type: none;
+}
+.friend-container ul li{
+    margin: 20px;
+    margin-bottom: 10px;
+}
+.friend-container ul li img{
+    height: 70px;
+    width: 70px;
+    margin: 7px; 
+    border-radius: 50%;
+}
+.request-container{
+    margin: 20px;
+    background-color: rgb(248, 235, 219);
+    width: 600px;
+}
+.request-container h3{
+    margin-left: 70px;
+    font-size: larger;
+}
+.request-container{
+    margin-left: 70px;
+    list-style-type: none;
+}
+.request-container ul{
+    list-style-type: none;
+    margin: 20px;
+}
+.recommendation{
+    width: 150px;
+    margin-top: 20px;
+    height: 30px;
+    margin-left: 5%;
+}
+.header{
+    display: flex;
+}
+.logout{
+    margin-left: 800px;
+}
+.friends-btn{
+    width: 90px;
+    height: 30px;
+    background-color: beige;
+}
