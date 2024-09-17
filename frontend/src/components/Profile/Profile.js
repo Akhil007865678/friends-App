@@ -17,7 +17,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchFriends = async () => {
       try {
-        const response = await axios.get(`http://${ipaddress}/api/friends/getfriends`, {
+        const response = await axios.get(`http://http://${ipaddress}/api/friends/getfriends`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const uniqueFriends = Array.from(new Set(response.data.map(friend => friend._id)))
@@ -31,7 +31,7 @@ const Profile = () => {
 
     const fetchFriendRequests = async () => {
       try {
-        const response = await axios.get(`http://${ipaddress}/api/friends/getrequests`, {
+        const response = await axios.get(`http://http://${ipaddress}/api/friends/getrequests`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const uniqueRequests = Array.from(new Set(response.data.map(request => request._id)))

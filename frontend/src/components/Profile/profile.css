@@ -65,7 +65,7 @@
 
 
 
-@media (max-width: 412px) {
+@media (max-width: 415px) {
     .container {
       padding: 20px;
     }
@@ -111,6 +111,7 @@
         width: 100vw;
         margin: 0px;
         margin-top: 70px;
+        height: 40vh;
     }
     .request-container h3{
         margin: 20pxpx;

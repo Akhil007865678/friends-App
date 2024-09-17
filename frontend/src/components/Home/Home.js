@@ -65,7 +65,10 @@ const Home = () => {
     }
   };
 
-  
+  const goToChat = (userId) => {
+    navigate(`/chat/${userId}`);
+  };
+
   const filteredUsers = users.filter(user => user._id !== userId);
   console.log(userId);
 
@@ -103,7 +106,7 @@ const Home = () => {
                   <div className='child-data'>
                     <h3>{user.username}</h3>
                     <div>
-                      <button className='user-btn' onClick={() => navigate(`/profile/${user._id}`)}>View Profile</button>
+                      <button className='user-btn' onClick={goToChat}>View Profile</button>
                       <button className='user-btn' onClick={() => sendFriendRequest(user._id)}>Add Friend</button>
                     </div>
                   </div>

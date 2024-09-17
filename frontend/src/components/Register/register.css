@@ -21,7 +21,7 @@ p{
     margin-left: 30px;
 }
 
-@media (max-width: 412px) {
+@media (max-width: 415px) {
     .container {
       padding: 20px;
     }
